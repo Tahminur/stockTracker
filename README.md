@@ -1,4 +1,4 @@
-# stockTracker
+# Stock Tracker
 A python application aimed at notifying a user for when a stock goes below a certain price
 
 USE GUIDE
