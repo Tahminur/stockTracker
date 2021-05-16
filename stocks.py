@@ -21,7 +21,11 @@ def convertAPIDataToMarketData(data):
 
 #takes dictionary of allstocks and name of a stock to return price
 def getPrice(allStocks, name):
-    return allStocks[name]
+    if name in allStocks:
+        return allStocks[name]
+    else:
+        raise NameError("No Such Stock")
+
 
 
 
@@ -31,7 +35,13 @@ def main():
     print(response.status_code)
     ListOfStocks = convertAPIDataToMarketData(response.json())
     #below accepts first argument passed in command line
-    print(getPrice(ListOfStocks, sys.argv[1]))
+
+    try:
+        price = getPrice(ListOfStocks, sys.argv[1])
+        print(price)
+    except NameError:
+        print("Stock name does not exist please check spelling")
+        raise
 
 
 
