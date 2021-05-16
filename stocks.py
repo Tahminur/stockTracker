@@ -27,7 +27,7 @@ def getPrice(allStocks, name):
 
 def main():
     #later configure this respoinse status code to handle errors
-    response = response = requests.get(cfg.api_url)
+    response = requests.get(cfg.api_url)
     print(response.status_code)
     ListOfStocks = convertAPIDataToMarketData(response.json())
     #below accepts first argument passed in command line
