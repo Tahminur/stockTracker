@@ -1,11 +1,10 @@
 import requests
 import json
+import sys
+import getopt
 
 import config as cfg
 
-#later configure this respoinse status code to handle errors
-response = response = requests.get(cfg.api_url)
-print(response.status_code)
 
 
 ### Function is to convert json returned from API into a dictionary with key being name or label, and values being price.
@@ -20,9 +19,20 @@ def convertAPIDataToMarketData(data):
 
     return allstocks
 
+def getPrice(allStocks, name):
+    return allStocks[name]
 
-ListOfStocks = convertAPIDataToMarketData(response.json())
 
 
-#need to look into why the price is different than price on robinhood may need diff api :/
-print(ListOfStocks['Dogecoin'])
+def main():
+    #later configure this respoinse status code to handle errors
+    response = response = requests.get(cfg.api_url)
+    print(response.status_code)
+    ListOfStocks = convertAPIDataToMarketData(response.json())
+    #below accepts first argument passed in command line
+    print(getPrice(ListOfStocks, sys.argv[1]))
+
+
+
+if __name__ == '__main__':
+    main()
