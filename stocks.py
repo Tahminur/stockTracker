@@ -19,6 +19,7 @@ def convertAPIDataToMarketData(data):
 
     return allstocks
 
+#takes dictionary of allstocks and name of a stock to return price
 def getPrice(allStocks, name):
     return allStocks[name]
 
