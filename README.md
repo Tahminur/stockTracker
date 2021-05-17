@@ -9,9 +9,9 @@ USE GUIDE
 API's used
 - World Coin Index: https://www.worldcoinindex.com/apiservice
 
-First Release (Current)
+First Feature Released (Current)
 - allow users to retrieve price of a given stock by providing it in the command line
 
-Second Release will aim to
+Second Feature Release will aim to
 - allow users to retrieve prices of multiple given stocks by providing it in the command line
 - give updates on the price of the given stocks every 5 minutes
