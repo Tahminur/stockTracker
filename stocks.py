@@ -4,6 +4,7 @@ import sys
 import getopt
 
 import config as cfg
+import monitoring as tracker
 
 
 
@@ -21,12 +22,23 @@ def convertAPIDataToMarketData(data):
 
 #takes dictionary of allstocks and name of a stock to return price
 def getPrice(allStocks, name):
+
     if name in allStocks:
         return allStocks[name]
+
     else:
         raise NameError("No Such Stock")
 
 
+def convertCommandLineArgs():
+
+    stockNames = []
+    i = 1
+    while i < len(sys.argv):
+        stockNames.append(sys.argv[i])
+        i = i + 1
+
+    return stockNames
 
 
 def main():
@@ -37,8 +49,13 @@ def main():
     #below accepts first argument passed in command line
 
     try:
-        price = getPrice(ListOfStocks, sys.argv[1])
-        print(price)
+        #for stock in convertCommandLineArgs():
+        #    price = getPrice(ListOfStocks, stock)
+        #    print(price)
+        for stock in tracker.stocks:
+            price = getPrice(ListOfStocks, stock)
+            print(price)
+
     except NameError:
         print("Stock name does not exist please check spelling")
         raise
